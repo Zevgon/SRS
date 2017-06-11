@@ -1,3 +1,7 @@
+import React from 'react';
+import { render } from 'react-dom';
+
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Hello from REACT!!!!!!');
+  const play = document.getElementById('play');
+  render(<div>Hello from REACT!!!!</div>, play);
 });
