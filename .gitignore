@@ -1,2 +1,4 @@
 /static
 *.pyc
+/node_modules
+*.map
