@@ -11236,7 +11236,7 @@ exports = module.exports = __webpack_require__(103)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  background-color: #eee;\n}\n.word-info {\n  background-color: white;\n}\n", ""]);
+exports.push([module.i, "body {\n  background-color: #eee;\n}\n.word-info {\n  background-color: white;\n  margin-bottom: 20px;\n}\n", ""]);
 
 // exports
 

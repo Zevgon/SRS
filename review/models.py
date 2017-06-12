@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.db import transaction
 from utils.word_utils import get_words
 from autoslug import AutoSlugField
+from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User # NOQA
 
 
 class Bucket(models.Model):
@@ -56,7 +58,8 @@ class Word(models.Model):
             ['language', 'english', 'foreign', 'user_id'], kwargs)
         if type(kwargs['language']) in [str, unicode]:
             try:
-                l = Language.objects.get(title=kwargs['language'])
+                l = Language.objects.get(
+                    title_slug=slugify(kwargs['language']))
             except Language.DoesNotExist:
                 raise Exception('We don\'t support that language yet')
             kwargs['language'] = l
@@ -64,11 +67,11 @@ class Word(models.Model):
 
     @classmethod
     @transaction.atomic
-    def bulk_add(cls, words, user_id, language):
+    def bulk_add(cls, words, user_id, language_slug):
         word_kwargs = {}
         word_kwargs['user_id'] = user_id
         try:
-            language_obj = Language.objects.get(title=language)
+            language_obj = Language.objects.get(title_slug=language_slug)
         except Language.DoesNotExist:
             raise Exception('We don\'t support that language yet')
         word_kwargs['language'] = language_obj
@@ -81,5 +84,7 @@ class Word(models.Model):
             cls.add(**word_kwargs)
 
     @classmethod
-    def set_up_user_with_words(cls, user, language):
-        words = get_words(language)
+    def set_up_user_with_words(cls, user, language_title):
+        language_slug = slugify(language_title)
+        words = get_words(language_slug)
+        cls.bulk_add(words, user.id, language_slug)
