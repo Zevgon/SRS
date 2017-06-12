@@ -6,12 +6,7 @@ from rest_framework.response import Response
 
 
 def play(request):
-    word = Word.objects.last()
-    data = {
-        'foreign': word.foreign,
-        'pronunciation': word.pronunciation
-    }
-    return render(request, 'play.html', data)
+    return render(request, 'play.html', {})
 
 
 class PlayView(APIView):

@@ -11013,6 +11013,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(25);
 
 var _react2 = _interopRequireDefault(_react);
@@ -11025,41 +11027,64 @@ __webpack_require__(226);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var App = function App(props) {
-  if (!props.words.length) {
-    props.dispatch((0, _actions.fetchWords)());
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var App = function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
   }
-  var formatted = [];
-  props.words.forEach(function (word) {
-    formatted.push(_react2.default.createElement(
-      'ul',
-      { className: 'word-info', key: word.english + word.foreign },
-      _react2.default.createElement(
-        'li',
+
+  _createClass(App, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.dispatch((0, _actions.fetchWords)());
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var formatted = [];
+      this.props.words.forEach(function (word) {
+        formatted.push(_react2.default.createElement(
+          'ul',
+          { className: 'word-info', key: word.english + word.foreign },
+          _react2.default.createElement(
+            'li',
+            null,
+            'English: ',
+            word.english
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            'Foreign: ',
+            word.foreign
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            'Pronunciation: ',
+            word.pronunciation
+          )
+        ));
+      });
+      return _react2.default.createElement(
+        'ul',
         null,
-        'English: ',
-        word.english
-      ),
-      _react2.default.createElement(
-        'li',
-        null,
-        'Foreign: ',
-        word.foreign
-      ),
-      _react2.default.createElement(
-        'li',
-        null,
-        'Pronunciation: ',
-        word.pronunciation
-      )
-    ));
-  });
-  return _react2.default.createElement(
-    'ul',
-    null,
-    formatted
-  );
-};
+        formatted
+      );
+    }
+  }]);
+
+  return App;
+}(_react2.default.Component);
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var words = _ref.words;
@@ -11123,14 +11148,23 @@ var fetchWords = exports.fetchWords = function fetchWords() {
       return r.json();
     }).then(function (r) {
       dispatch(wordsReceived(r));
-    }).catch(url);
+    }).catch(function (error) {
+      dispatch(errorReceived);
+    });
   };
 };
 
 var wordsReceived = exports.wordsReceived = function wordsReceived(words) {
   return {
     type: 'RECEIVE_WORDS',
-    words: words
+    payload: words
+  };
+};
+
+var errorReceived = exports.errorReceived = function errorReceived(error) {
+  return {
+    type: 'RECEIVE_ERROR',
+    payload: error
   };
 };
 
@@ -11185,7 +11219,9 @@ var reducer = exports.reducer = function reducer() {
 
   switch (action.type) {
     case 'RECEIVE_WORDS':
-      return Object.assign({}, { words: action.words });
+      return Object.assign({}, { words: action.payload });
+    case 'RECEIVE_ERROR':
+      return Objects.assign({}, { error: action.payload });
     default:
       return state;
   }
@@ -11200,7 +11236,7 @@ exports = module.exports = __webpack_require__(103)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  background-color: red;\n}\n.word-info {\n  background-color: blue;\n}\n", ""]);
+exports.push([module.i, "body {\n  background-color: #eee;\n}\n.word-info {\n  background-color: white;\n}\n", ""]);
 
 // exports
 

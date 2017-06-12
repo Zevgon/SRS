@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db import transaction
 from utils.word_utils import get_words
+from autoslug import AutoSlugField
 
 
 class Bucket(models.Model):
@@ -15,10 +16,11 @@ class Bucket(models.Model):
 
 
 class Language(models.Model):
-    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    title_slug = AutoSlugField(unique=True, populate_from='title')
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Word(models.Model):
@@ -54,7 +56,7 @@ class Word(models.Model):
             ['language', 'english', 'foreign', 'user_id'], kwargs)
         if type(kwargs['language']) in [str, unicode]:
             try:
-                l = Language.objects.get(name=kwargs['language'])
+                l = Language.objects.get(title=kwargs['language'])
             except Language.DoesNotExist:
                 raise Exception('We don\'t support that language yet')
             kwargs['language'] = l
@@ -66,7 +68,7 @@ class Word(models.Model):
         word_kwargs = {}
         word_kwargs['user_id'] = user_id
         try:
-            language_obj = Language.objects.get(name=language)
+            language_obj = Language.objects.get(title=language)
         except Language.DoesNotExist:
             raise Exception('We don\'t support that language yet')
         word_kwargs['language'] = language_obj
