@@ -1,0 +1,500 @@
+一    yī: one
+二    èr: two
+三    sān: three
+四    sì: four
+五    wǔ: five
+六    liù: six
+七    qī: seven
+八    bā: eight
+九    jiǔ: nine
+十    shí: ten
+日    rì: sun
+月    yuè: moon, month
+人    rén: person
+大    dà: big
+头    tóu: head, first
+太    tài: too, the greatest
+天    tiān: day, sky
+夫    fū: husband, man
+入    rù: to enter
+从    cóng: from, follow
+北    běi: north
+比    bǐ: compare, than
+明    míng: bright, know
+早    zǎo: morning, early, long ago
+白    bái: white, in vain
+百    bǎi: hundred
+时    shí: time, hour
+是    shì: am, is, are, correct
+上    shàng: upper, go up
+下    xià: lower, down
+口    kǒu: mouth
+古    gǔ: ancient
+叫    jiào: to (be) call(ed)
+听    tīng: to listen, to hear
+言    yán: words, say
+信    xìn: letter, believe
+手    shǒu: hand
+又    yòu: again, and
+双    shuāng: pair, dual, both
+友    yǒu: friend
+有    yǒu: to have, there is/are, posses
+受    shòu: receive, endure, accept
+爱    ài: to love
+争    zhēng: contend, argue, struggle, fight,
+反    fǎn: inversive, on the contrary, wrong side out or up / anti-
+饭    fàn: meal, cooked rice
+取    qǔ: to take, to get, to choose, to fetch
+最    zuì: most
+左    zuǒ: left
+右    yòu: right
+了    le / liǎo: verb ending / understand, finish, settle
+子    zǐ / zi: child, son / noun suffix
+字    zì: character, word
+个    gè: (a measure word), individual
+中    zhōng / zhòng: center, China / hit
+才    cái: just, not until, ability
+木    mù: tree, wood
+林    lín: woods, forest, Chinese surname
+本    běn: root, original, book, volume
+体    tǐ: body / form / style / system
+术    shù: skill, skill, art
+李    lǐ: a family name, plum
+休    xīu: rest, stop
+果    guǒ: fruit, as expected
+不    bù: not
+还    hái / huán: still / return
+杯    bēi: cup, glass
+土    tǔ: soil, earth, local
+坏    huài: bad, spoiled, broken, to break down
+坐    zuò: to sit
+干    gān / gàn: have to do with / dry, work
+于    yú: at, on, in, to, than
+千    qiān: thousand
+女    nǚ － female, woman: thousand
+好    hǎo / hào: good, very / like, be fond of
+如    rú: as (if), like, such as
+安    ān: safe, secure, install
+家    jiā: family, home
+我    wǒ: I, me
+你    nǐ: you (singular)
+也    yě: also, too
+他    tā: he, him, other
+她    tā: she, her
+它    tā: it
+水    shuǐ: water
+小    xiǎo: small, little (in size)
+少    shǎo / shào: few, little, less / children, young
+半    bàn: half
+工    gōng: work, industry
+王    wáng: king, Chinese surname
+主    zhǔ: host, main
+注    zhù: pour, concentrate
+住    zhù: to live
+国    guó: country, state, nation
+马    mǎ: horse, Chinese surname
+吗    ma / má/ mǎ: a question particle for yes/no questions / what / morphine
+妈    mā: mother, mom
+父    fù: father
+爸    bà: dad, father
+吧    ba: modal particle indicating polite suggestion, ...right?, ...OK?
+把    bǎ: hold, take, control, guard, regard as
+的    de / dí / dì: (a possessive particle used after pronoun/noun) / really and truly / aim, target
+儿    ér: child, son
+几    jī / jǐ: table / several, how many
+机    jī: machine, chance
+样    yàng: appearance, sample
+养    yǎng: raise, provide for
+美    měi: beautiful
+门    Mén: door, gate
+们    mén: particle to plurals form
+问    wèn: to ask
+间    jiān / jiàn: room, measure for room / space in between
+多    duō: many, much, more
+夜    yè: night, evening
+望    wàng: gaze into the distance
+什    shén / shí: what / varied
+么    me / yào: interrogative particle / one
+今    jīn: now, present
+昨    zuó: yesterday
+作    zuò: work, do make
+心    xīn: heart
+怎    zěn: how, why
+必    bì: certainly, necessary
+在    zài: exist, in, at, on
+来    lái: to come
+去    qù: to go, leave
+却    què: step back, but, however
+到    dào: to arrive, reach
+倒    dǎo / dào: to fall, to collapse, to fail, bankrupt / upside down, reverse, pour, tip
+文    wén: script, literature, written language
+之    zhī: him, her, it, of
+这    zhè: this
+那    nà: that
+哪    nǎ / na: witch, what / particle
+呢    ne: question particle
+谁    shéi / shuí: who, anyone
+为    wéi / wèi: do, act / for
+目    mù: eye
+眼    yǎn: eye
+看    kān / kàn: to read, to see / to look after, take care
+见    jiàn: to see
+现    xiàn: appear
+观    guān: to look at, view
+东    dōng: east
+西    xī: west
+要    yào: to want, important, if
+南    nán: south
+画    huà: draw, point, stroke
+名    míng: name
+各    ge: each, every
+万    wàn: ten thousand
+方    fāng: square
+房    fáng: house
+放    fàng: to let off, to let go, to release
+可    kě: may, but, yet
+哥    gē: elder brother
+河    hé: river
+何    hé: why, what, Chinese surname
+第    dì: younger brother
+第    dì: ordinal number indicator
+且    qiě: and, just
+姐    jiě: elder sister
+妹    mèi: younger sister
+而    ér: and, but
+以    yǐ: with, according to, and, in order to
+山    shān: mountain
+出    chū: to go out, arise, happen, issue, produce
+火    huǒ: fire
+点    diǎn: drop a liquid, a little, a bit, light burn
+照    zhào: shine, reflect, take a picture
+热    rè: hot, heat
+然    rán: so, like that, however
+黑    hēi: black
+石    shí － stone, rock: black
+和    hé / hè / huo: harmonious, and, with / join in the singing, write a poem in reply
+利    lì: to be sharp, benefit
+种    zhǒng / zhòng: seed, breed, kind, soft / to plant, to cultivate
+内    neì: inner, inside
+同    tóng: same, together
+市    shì: market, city
+用    yòng: to use
+力    lì: strength
+历    lì: history, go through, calendar
+男    nán: male, man, son, boy
+动    dòng: to move
+地    dì / de: earth / particle
+买    mǎi: to buy
+卖    mài: to sell
+对    duì: right, correct, towards, a pair of
+只    zhī / zhǐ: a measure / only
+识    shí: to know
+认    rèn: recognize
+生    shēng: give birth, unripe, unfamiliar
+先    xiān: first, ancestor, earlier, in advance
+后    hòu: back, rear, behind, queen
+胜    shèng: victorious, win, succeed
+姓    xìng: a surname
+雨    yǔ: rain
+学    xué: to study
+觉    jué / jiào: feel / sleep
+习    xí: to learn, practice
+书    shū: book
+汉    hàn: man, Han Chinese
+江    jiāng: river, Chinese surname
+语    yǔ: language
+说    shuō: to say, to speak
+话    huà: words, dialect, language
+活    huó: live, alive, living, work
+讲    jiǎng: speak, say, tell
+进    jìn: to come in, advance
+读    dú: read, attend, school
+哭    kū: to cry, to weep
+笑    xiào: to smile, to laugh
+器    qì: utensil, device, tool, utensil, organ
+朋    péng: friend
+再    zài: again
+向    xiàng: direction, facing, towards
+响    xiǎng: sound
+英    yīng: flower, English, hero
+法    fǎ: method, way, France
+吃    chī: to eat
+年    nián: year
+元    yuán: first, primary, Chinese Dollar
+远    yuǎn: far
+近    jìn: near, close
+毛    máo: hair, feather
+分    fēn / fèn: divide, a unit of weight money / component, part
+块    kuài: lump, piece, chunk, Chinese Dollar
+快    kuài: fast, happy, sharp
+很    hěn: very
+跟    gēn: follow, and
+走    zǒu: to go, to walk (physically)
+路    lù: road, way
+自    zì: self, from
+己    jǐ: oneself
+已    yǐ: stop, already
+改    gǎi: to change, to alter, to transform, to correct
+起    qǐ: to rise
+记    jì: to remember, write down
+没    méi / mò: not have / sink
+设    shè: to set up, to arrange, to establish, to found, to display
+与    yǔ: and, together, with
+写    xiě: to write
+午    wǔ: noon, midday
+许    xǔ: to allow, maybe
+得    dé / de / děi: get, gain / suffix / must
+但    dàn: but, yet
+青    qīng: green, young
+清    qǐng: clear, Qing Dynasty
+情    qíng: feeling, emotion, passion, situation
+请    qǐng: please, request, invite
+精    jīng: refined, perfect, spirit
+能    néng: can, be able to, ability, energy
+开    kāi: to open, to start
+并    bìng: combine, and
+关    guān: close, turn off, customs house, barriers
+送    sòng: deliver, give as gift, see sb off
+车    chē: car, vehicle
+连    lián: to join, link, even, company military unit
+军    jūn: army, military, arms
+此    cǐ: this, these
+些    xiē: some
+老    lǎo: old
+考    kǎo: test, exam
+者    zhě: person, thing
+教    jiāo / jiào: teach, instruction / teach, instruction, religion
+师    shī: teacher
+着    zhāo / zhe: catch, touch / suffix
+会    huì: meet, meeting, association, be able to, be likely to
+两    liǎng: two, both, unit of weight
+史    shǐ: history
+使    shǐ: make, cause, envoy, messenger
+更    gēng / gèng: to change / more, still more
+便    biàn / pián: than, convenient, informal / cheap
+交    jiaō: hand in, cross, make friend, mutual
+校    xiào / jiào: school / proofread, to check, to compare
+较    jiào: compare, comparatively, quite
+回    huí: to return, circle, wind
+合    hé: suit, fit, join, combine, close, shut
+拿    ná: to take, to hold, to get
+给    gěi / jǐ: give, grant, for, by / supply ,
+答    dā / dá: to answer, reply
+正    zhèng / zhēng: upright, straight, correct, principle / Chinese 1st month of year
+证    zhēng: prove, evidence, certificate, card
+政    zhèng: politics, government
+整    zhěng: exactly, whole, entire
+立    lì: to stand, establish
+位    wèi: place, location, a polite measure for people
+音    yīn: sound, noise, news
+意    yì: mind, meaning, idea
+找    zhǎo: to look for, give change
+公    gōng: public, common, male animal, husband father, metric system
+共    gòng: together, common, Communist Party
+打    dǎ / dá: hit, strike, play, make / dozen
+收    shōu: to receive, to accept, income
+都    dōu / dū: both, all / Chinese surname, metropolis, capital city
+当    dāng / dàng: work as, ought to, just at / proper, right
+常    cháng: usually, often, ordinary
+气    qì: air, gas, make angry
+汽    qì: steam, vapor
+过    guò: pass, cross, indicating past action
+成    chéng: finish, complete, accomplish
+别    bié: leave, part, other, another, don't
+相    xiàng: looks, appearance, each other,
+想    xiǎng: think, miss, want to
+思    sī: to think, thought
+志    zhì: will, aspiration, keep in mind, mark, sign
+感    gǎn: feel, feeling, be grateful
+厂    chǎng: factory, mill
+长    cháng / zhǎng: long / grow, leader
+借    jiè: borrow, lend
+练    liàn: to practice
+晚    wǎn: evening, night, late
+其    qí: his, her, it's, their, he, she, it, they, that, such
+期    qī: period of time
+化    huà: change, convert
+花    huā: flower, spend, expand
+华    huá: magnificent, splendid, China, Chinese
+事    shì: after, thing
+笔    bǐ: pen
+让    ràng: let, allow, give away
+因    yīn: cause, because
+母    mǔ: mother
+每    měi: each, pair
+海    hǎi: sea
+高    gāo: high, tall
+京    jīng: capital
+影    yǐng: shadow, photograph
+电    diàn: electricity, telegram, cable
+平    píng: flat, even, put down, suppress, calm, peaceful
+包    bāo: wrap, package
+衣    yī: clothes
+被    bèi: cover, to wear, quilt, by (in passive voice )
+装    zhuāng: outfit, clothing, act, dress up, load, pack
+故    gù: former, old, incident, reason
+做    zuò: to do, to make
+飞    fēi: to fly
+图    tú: map, picture
+运    yùn: carry, transport
+加    jiā: plus, to add
+号    huā / hào: howl, yell / name, date, number
+件    jiàn: letter, document
+令    lìng: order, command, make, cause
+领    lǐng: collar, lead, usher
+里    lǐ: lining, inside, in, Chinese unit of length = 500 meters
+理    lǐ: reason, logic, natural, science, manage, run
+求    qiú: beg, seek, strike for
+球    qiú: sphere, globe, ball
+谢    xiè: thank
+由    yóu: cause, reason, from
+众    zhòng: crowd
+知    zhī: know, realize, knowledge
+道    dào: direction, road, way, speak, say
+边    biān: side, boundary, border
+病    bìng: illness, to get sick
+次    cì: second-rate, inferior, rate
+决    jué: decide, determinate
+冷    lěng: cold
+准    zhǔn: allowed, standard, accurate
+死    sǐ: die, dead, extremely
+就    jiù: come near, undertake, accomplish, at once, right away
+茶    chá: tea
+菜    cài: vegetable, dish
+报    bào: report, newspaper, recompense
+张    zhāng: open, a measure word for flat objects, Chinese surname
+产    chǎn: to produce, to give birth
+床    chuáng: bed
+或    huò: perhaps, might, possibly, or,
+忙    máng: busy
+慢    màn: slow
+前    qián: front, former
+民    mín: the people, civilian
+身    shēn: body
+完    wán: intact, whole, finish
+院    yuàn: yard
+员    yuán: member, person engaged in something
+圆    yuán: round, circle
+直    zhí: straight, direct
+真    zhēn: really, true, real
+词    cí: word
+等    děng: wait, class, grade
+红    hóng: red
+非    fēi: not, no, wrong
+客    kè: guest, visitor
+难    nán / nàn: difficult, unpleasant / disaster
+世    shì: lifetime, age, era
+界    jiè: boundary
+全    quán: whole, complete
+色    sè: color, scene, women's looks, looks, expression
+无    wú: nothing, not have
+义    yì: justice, righteousness, meaning
+亲    qīn: parent, relatives, in person
+新    xīn: new, newly
+节    jié: festival, economize
+角    jiǎo / jué: horn / role, part, contend
+解    jiě: divide, separate, explain, solve
+始    shǐ: begin, beginning
+科    kē: branch, division, science
+级    jí: level, rank
+极    jí: extremely, pole
+风    fēng: wind
+代    dài: generation, dynasty
+表    biǎo: surface, show, watch
+办    bàn: do, handle, run, punish
+定    dìng: calm, stable, decide, subscribe, book
+告    gào: tell, inform, accuse
+计    jì: count, compute, idea, plan
+诉    sù: tell, complain, accuse
+业    yè: line of business, trade, enterprise, cause
+光    guāng: light, glory, smooth, glossy
+复    fù: duplicate, answer, recover, resume
+服    fú: clothes, dress, serve, obey, take, medicine
+克    kè: overcome, gram
+空    kōng / kòng: sky, empty, hollow / empty space, free time, vacant, leave empty
+片    piàn: a flat, thin piece, slice
+外    wài: outside, outer, outward, other, foreign
+望    wàng: go, past, toward, to
+论    lùn: discuss, opinion, view
+谈    tán: talk, chat, what is said
+星    xīng: star
+行    xíng / háng: go, travel, OK / line, business, firm
+形    xíng: form, body
+须    xū: beard, mustache, must, have to
+选    xuǎn: select, choose, elect
+医    yī: doctor, medical service
+应    yīng / yìng: should / answer, respond
+该    gāi: should, ought to, this
+拉    lā: to pull, draw
+念    niàn: think of, study
+农    nóng: farming, farmer
+命    mìng: life, order
+岁    suì: year, year of age
+兴    xīng / xìng: become popular / mood, desire
+系    xì / jì: system, department / tie, fasten
+条    tiáo: a long narrow piece, item, article, measure word
+提    tí: to carry, to lift, bring up
+题    tí: topic, inscribe, write
+布    bù: to declare, to announce, cloth
+够    gòu: to declare, to announce, cloth
+劳    láo: work
+轻    qīng: light
+经    jīng: pass, through, scripture, classics
+重    zhòng / chóng: heavy, serious / repeat pass, through, scripture, classics
+量    liáng / liàng: to measure / quantity
+跑    pǎo: to run
+容    róng: appearance / hold, to contain
+易    yì: change, easy, simple
+需    xū: require, to need, to want, necessity
+接    jiē: to meet, to pick (someone) up, receive
+侯    hòu: wait, time
+参    cān / shēn: join, take part in, refer, consult / ginseng
+层    céng: layer
+导    dǎo: lead
+步    bù: step, walk
+低    dī: low
+部    bù: part, unit, section
+错    cuò: wrong, mistake, fault
+发    fà: send, hair
+备    bèi: prepare, get ready
+结    jiē / jié: knit, marry / bear, form
+紧    jǐn: tight, urgent
+面    miàn: face, surface
+原    yuán: original, primary
+越    yuè: to exceed, get over
+总    zǒng: assemble, put together, chief, head, always
+组    zǔ: organize, group, set, series
+治    zhì: rule, govern, cure, treat
+帮    bāng: help, gang
+场    chǎng: open field
+变    biàn: change
+将    jiāng / jiàng: be going to, check (in Chinese chess) / general, commander
+府    fǔ: government office, your home
+离    lí: to leave, apart
+例    lì: examples, instances
+流    liú: to flow, to spread, to circulate, to move
+社    shè: agency, society, group
+神    shén: god, spirit
+声    shēng: sound, voice, tone
+式    shì: type, pattern, style
+虽    suī: although, even though
+算    suàn: calculate
+务    wù: affair, business, must
+物    wù: thing, object, matter
+实    shí: real, true, honest, really, solid
+商    shāng: trade, commerce, discuss, business
+查    chá: inspect, check
+按    àn: to press, push down, according to
+带    dài: belt, type, bring, take
+省    shěng / xǐng: province, economize, save / examine, be aware
+所    suǒ: place
+特    tè: special
+通    tōng: open, through, understand, know
+鱼    yú: fish
+制    zhì: make, manufacture, system
+指    zhǐ: finger, point at
+建    jiàn: build, erect
+象    xiàng: elephant, imitate
+数    shù / shǔ: number / count
+纸    zhǐ: paper
+展    zhǎn: spread out, exhibition

@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.db import transaction
+from utils.word_utils import get_words
 
 
 class Bucket(models.Model):
@@ -41,17 +43,41 @@ class Word(models.Model):
         }
 
     @classmethod
-    def validate_key(cls, key, kwargs):
-        if key not in kwargs:
-            raise Exception('Must include %s' % key)
+    def validate_keys(cls, keys, kwargs):
+        for key in keys:
+            if key not in kwargs:
+                raise Exception('Must include %s' % key)
 
     @classmethod
     def add(cls, **kwargs):
-        for key in ['language', 'english', 'foreign', 'user_id']:
-            cls.validate_key(key, kwargs)
+        cls.validate_keys(
+            ['language', 'english', 'foreign', 'user_id'], kwargs)
+        if type(kwargs['language']) in [str, unicode]:
+            try:
+                l = Language.objects.get(name=kwargs['language'])
+            except Language.DoesNotExist:
+                raise Exception('We don\'t support that language yet')
+            kwargs['language'] = l
+        cls.objects.create(**kwargs)
+
+    @classmethod
+    @transaction.atomic
+    def bulk_add(cls, words, user_id, language):
+        word_kwargs = {}
+        word_kwargs['user_id'] = user_id
         try:
-            l = Language.objects.get(name=kwargs['language'])
+            language_obj = Language.objects.get(name=language)
         except Language.DoesNotExist:
             raise Exception('We don\'t support that language yet')
-        kwargs['language'] = l
-        cls.objects.create(**kwargs)
+        word_kwargs['language'] = language_obj
+
+        for word in words:
+            word_kwargs['english'] = word['english']
+            word_kwargs['foreign'] = word['foreign']
+            if 'pronunciation' in word:
+                word_kwargs['pronunciation'] = word['pronunciation']
+            cls.add(**word_kwargs)
+
+    @classmethod
+    def set_up_user_with_words(cls, user, language):
+        words = get_words(language)
