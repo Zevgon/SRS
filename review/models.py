@@ -6,9 +6,10 @@ from django.contrib.auth.models import User
 
 class Bucket(models.Model):
     number = models.IntegerField()
+    user = models.ForeignKey(User)
 
     def __str__(self):
-        return self.number
+        return str(self.number)
 
 
 class Language(models.Model):
@@ -28,3 +29,10 @@ class Word(models.Model):
 
     def __str__(self):
         return '%s: %s' % (self.english, self.foreign) + ' (%s)' % self.language # NOQA
+
+    def to_obj(self):
+        return {
+            'english': self.english,
+            'foreign': self.foreign,
+            'pronunciation': self.pronunciation
+        }
