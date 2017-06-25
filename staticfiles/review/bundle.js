@@ -11023,6 +11023,10 @@ var _reactRedux = __webpack_require__(54);
 
 var _actions = __webpack_require__(99);
 
+var _word = __webpack_require__(234);
+
+var _word2 = _interopRequireDefault(_word);
+
 __webpack_require__(226);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -11033,26 +11037,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-window.updateWord = _actions.updateWord;
-
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
 
   function App(props) {
     _classCallCheck(this, App);
 
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-    _this.guess = _this.guess.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
   }
 
   _createClass(App, [{
-    key: 'guess',
-    value: function guess() {
-      this.props.dispatch((0, _actions.updateWord)(1, 'one'));
-    }
-  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.dispatch((0, _actions.fetchWords)());
@@ -11060,41 +11054,10 @@ var App = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var formatted = [];
-      this.props.words.forEach(function (word, idx) {
-        formatted.push(_react2.default.createElement(
-          'ul',
-          { className: 'word-info', key: word.english + word.foreign },
-          _react2.default.createElement(
-            'li',
-            null,
-            idx + 1
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'English: ',
-            word.english
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'Foreign: ',
-            word.foreign
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            'Pronunciation: ',
-            word.pronunciation
-          )
-        ));
-      });
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('button', { onClick: this.guess }),
-        formatted
+        this.props.words.length ? _react2.default.createElement(_word2.default, { word: this.props.words[0] }) : null
       );
     }
   }]);
@@ -11281,7 +11244,9 @@ var getNumForward = function getNumForward(knowStatus) {
 };
 
 var getUpdatedWords = function getUpdatedWords(words, numForward) {
-  if (numForward >= words.length) {
+  if (numForward === 0) {
+    return Array.from(words);
+  } else if (numForward >= words.length) {
     return words.slice(1);
   }
   return words.slice(1, numForward).concat([words[0]]).concat(words.slice(numForward));
@@ -25251,6 +25216,89 @@ var postJson = exports.postJson = function postJson(url, data) {
     return res.json();
   });
 };
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(25);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(54);
+
+var _actions = __webpack_require__(99);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Word = function (_Component) {
+  _inherits(Word, _Component);
+
+  function Word(props) {
+    _classCallCheck(this, Word);
+
+    var _this = _possibleConstructorReturn(this, (Word.__proto__ || Object.getPrototypeOf(Word)).call(this, props));
+
+    _this.state = {
+      guess: ''
+    };
+    _this.submitGuess = _this.submitGuess.bind(_this);
+    _this.updateGuess = _this.updateGuess.bind(_this);
+    return _this;
+  }
+
+  _createClass(Word, [{
+    key: 'updateGuess',
+    value: function updateGuess(e) {
+      this.setState({
+        guess: e.target.value
+      });
+    }
+  }, {
+    key: 'submitGuess',
+    value: function submitGuess(wordId, guess) {
+      this.props.dispatch((0, _actions.updateWord)(wordId, guess));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          null,
+          this.props.word.foreign
+        ),
+        _react2.default.createElement('input', { type: 'text', value: this.state.guess, onChange: this.updateGuess }),
+        _react2.default.createElement('button', { onClick: function onClick() {
+            return _this2.submitGuess(_this2.props.word.id, _this2.state.guess);
+          } })
+      );
+    }
+  }]);
+
+  return Word;
+}(_react.Component);
+
+exports.default = (0, _reactRedux.connect)()(Word);
 
 /***/ })
 /******/ ]);

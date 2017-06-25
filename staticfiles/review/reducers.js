@@ -3,7 +3,9 @@ const getNumForward = knowStatus => (
 );
 
 const getUpdatedWords = (words, numForward) => {
-  if (numForward >= words.length) {
+  if (numForward === 0) {
+    return Array.from(words);
+  } else if (numForward >= words.length) {
     return words.slice(1);
   }
   return words.slice(1, numForward).concat([words[0]]).concat(words.slice(numForward));

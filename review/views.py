@@ -28,7 +28,7 @@ class GuessView(APIView):
         word_stats = WordStats.objects.get(word=word)
         word_stats.last_reviewed = timezone.now()
         word_stats.bucket = Bucket.objects.first()
-        word_stats.know_status -= 1
+        word_stats.know_status -= 1 if word_stats.know_status > 0 else 0
         word_stats.save()
         return word_stats
 
