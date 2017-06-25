@@ -11057,7 +11057,10 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        this.props.words.length ? _react2.default.createElement(_word2.default, { word: this.props.words[0] }) : null
+        this.props.words.length ? _react2.default.createElement(_word2.default, {
+          word: this.props.words[0],
+          numCurrent: this.props.words.length
+        }) : null
       );
     }
   }]);
@@ -11097,12 +11100,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var initialState = {
   words: [],
-  stats: []
+  stats: [],
+  wordCount: {
+    total: 0,
+    current: 0
+  }
 };
 
 var rootReducer = (0, _redux.combineReducers)({
   words: _reducers.wordReducer,
-  stats: _reducers.statsReducer
+  stats: _reducers.statsReducer,
+  wordCount: _reducers.wordCountReducer
 });
 
 var store = (0, _redux.createStore)(rootReducer, initialState, (0, _redux.applyMiddleware)(_reduxThunk2.default));
@@ -11274,6 +11282,18 @@ var statsReducer = exports.statsReducer = function statsReducer() {
   var action = arguments[1];
 
   return stats;
+};
+
+var wordCountReducer = exports.wordCountReducer = function wordCountReducer() {
+  var wordCounts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { total: 0, current: 0 };
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'RECEIVE_WORDS':
+      return Object.assign({}, wordCounts, { total: action.payload.length });
+    default:
+      return wordCounts;
+  }
 };
 
 /***/ }),
@@ -25271,8 +25291,12 @@ var Word = function (_Component) {
     }
   }, {
     key: 'submitGuess',
-    value: function submitGuess(wordId, guess) {
+    value: function submitGuess(e, wordId, guess) {
+      e.preventDefault();
       this.props.dispatch((0, _actions.updateWord)(wordId, guess));
+      this.setState({
+        guess: ''
+      });
     }
   }, {
     key: 'render',
@@ -25287,10 +25311,21 @@ var Word = function (_Component) {
           null,
           this.props.word.foreign
         ),
-        _react2.default.createElement('input', { type: 'text', value: this.state.guess, onChange: this.updateGuess }),
-        _react2.default.createElement('button', { onClick: function onClick() {
-            return _this2.submitGuess(_this2.props.word.id, _this2.state.guess);
-          } })
+        _react2.default.createElement(
+          'div',
+          null,
+          this.props.numCurrent,
+          '/',
+          this.props.total
+        ),
+        _react2.default.createElement(
+          'form',
+          null,
+          _react2.default.createElement('input', { type: 'text', value: this.state.guess, onChange: this.updateGuess }),
+          _react2.default.createElement('button', { onClick: function onClick(e) {
+              return _this2.submitGuess(e, _this2.props.word.id, _this2.state.guess);
+            } })
+        )
       );
     }
   }]);
@@ -25298,7 +25333,14 @@ var Word = function (_Component) {
   return Word;
 }(_react.Component);
 
-exports.default = (0, _reactRedux.connect)()(Word);
+var mapStateToProps = function mapStateToProps(_ref) {
+  var wordCount = _ref.wordCount;
+  return {
+    total: wordCount.total
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Word);
 
 /***/ })
 /******/ ]);

@@ -102,6 +102,11 @@ class WordStats(models.Model):
         self.save()
 
     @classmethod
+    def reset_all(cls):
+        for ws in cls.objects.all():
+            ws.reset()
+
+    @classmethod
     @transaction.atomic
     def set_up_user_with_word_stats(cls, user, language):
         for word in Word.objects.filter(language=language):

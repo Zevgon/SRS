@@ -28,3 +28,12 @@ export const wordReducer = (words = [], action) => {
 export const statsReducer = (stats = [], action) => {
   return stats;
 }
+
+export const wordCountReducer = (wordCounts = {total: 0, current: 0}, action) => {
+  switch (action.type) {
+    case 'RECEIVE_WORDS':
+      return Object.assign({}, wordCounts, { total: action.payload.length });
+    default:
+      return wordCounts;
+  }
+}

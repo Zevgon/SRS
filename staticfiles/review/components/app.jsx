@@ -16,7 +16,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {this.props.words.length ? <Word word={this.props.words[0]} /> : null}
+        {this.props.words.length ?
+          <Word
+            word={this.props.words[0]}
+            numCurrent={this.props.words.length}
+          /> : null
+        }
       </div>
     );
   }

@@ -18,19 +18,30 @@ class Word extends Component {
     });
   }
 
-  submitGuess(wordId, guess) {
+  submitGuess(e, wordId, guess) {
+    e.preventDefault();
     this.props.dispatch(updateWord(wordId, guess));
+    this.setState({
+      guess: '',
+    });
   }
 
   render() {
     return (
       <div>
         <div>{this.props.word.foreign}</div>
-        <input type="text" value={this.state.guess} onChange={this.updateGuess} />
-        <button onClick={() => this.submitGuess(this.props.word.id, this.state.guess)}></button>
+        <div>{this.props.numCurrent}/{this.props.total}</div>
+        <form>
+          <input type="text" value={this.state.guess} onChange={this.updateGuess} />
+          <button onClick={(e) => this.submitGuess(e, this.props.word.id, this.state.guess)}></button>
+        </form>
       </div>
     );
   }
 }
 
-export default connect()(Word);
+const mapStateToProps = ({ wordCount }) => ({
+  total: wordCount.total,
+});
+
+export default connect(mapStateToProps)(Word);
