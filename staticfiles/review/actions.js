@@ -1,3 +1,5 @@
+import { postJson } from '../common/utils';
+
 export const fetchWords = () => {
   const url = '/api/play';
 
@@ -7,11 +9,45 @@ export const fetchWords = () => {
     .then(r => {
       dispatch(wordsReceived(r))
     })
-    .catch(error => {
-      dispatch(errorReceived);
+    .catch(() => {
+      dispatch(receiveError)
     });
-  }
+  };
 };
+
+export const updateWord = (wordId, english) => {
+  const data = {
+    wordId,
+    english,
+  };
+
+  return dispatch => {
+    postJson('/api/guess/', data).then(res => {
+      dispatch(receiveGuess(res.knowStatus))
+    }).catch(() => {
+      dispatch(receiveError)
+    });
+  };
+
+
+  // return (dispatch) => {
+  //   const ret = fetch(url)
+  //   .then(r => r.json())
+  //   .then(knowStatus => {
+  //     dispatch(receiveGuess(knowStatus));
+  //   })
+  //   .catch(error => {
+  //     dispatch(receiveError)
+  //   });
+  // };
+}
+
+export const receiveGuess = knowStatus => {
+  return {
+    type: 'RECEIVE_GUESS',
+    knowStatus: parseInt(knowStatus, 10),
+  };
+}
 
 export const wordsReceived = words => {
   return {
@@ -20,9 +56,9 @@ export const wordsReceived = words => {
   }
 }
 
-export const errorReceived = error => {
+export const receiveError = error => {
   return {
     type: 'RECEIVE_ERROR',
     payload: error,
-  }
+  };
 }

@@ -11033,16 +11033,26 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+window.updateWord = _actions.updateWord;
+
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
 
   function App(props) {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.guess = _this.guess.bind(_this);
+    return _this;
   }
 
   _createClass(App, [{
+    key: 'guess',
+    value: function guess() {
+      this.props.dispatch((0, _actions.updateWord)(1, 'one'));
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.dispatch((0, _actions.fetchWords)());
@@ -11051,10 +11061,15 @@ var App = function (_React$Component) {
     key: 'render',
     value: function render() {
       var formatted = [];
-      this.props.words.forEach(function (word) {
+      this.props.words.forEach(function (word, idx) {
         formatted.push(_react2.default.createElement(
           'ul',
           { className: 'word-info', key: word.english + word.foreign },
+          _react2.default.createElement(
+            'li',
+            null,
+            idx + 1
+          ),
           _react2.default.createElement(
             'li',
             null,
@@ -11076,8 +11091,9 @@ var App = function (_React$Component) {
         ));
       });
       return _react2.default.createElement(
-        'ul',
+        'div',
         null,
+        _react2.default.createElement('button', { onClick: this.guess }),
         formatted
       );
     }
@@ -11150,6 +11166,10 @@ module.exports = __webpack_require__(143);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.receiveError = exports.wordsReceived = exports.receiveGuess = exports.updateWord = exports.fetchWords = undefined;
+
+var _utils = __webpack_require__(233);
+
 var fetchWords = exports.fetchWords = function fetchWords() {
   var url = '/api/play';
 
@@ -11158,9 +11178,42 @@ var fetchWords = exports.fetchWords = function fetchWords() {
       return r.json();
     }).then(function (r) {
       dispatch(wordsReceived(r));
-    }).catch(function (error) {
-      dispatch(errorReceived);
+    }).catch(function () {
+      dispatch(receiveError);
     });
+  };
+};
+
+var updateWord = exports.updateWord = function updateWord(wordId, english) {
+  var data = {
+    wordId: wordId,
+    english: english
+  };
+
+  return function (dispatch) {
+    (0, _utils.postJson)('/api/guess/', data).then(function (res) {
+      dispatch(receiveGuess(res.knowStatus));
+    }).catch(function () {
+      dispatch(receiveError);
+    });
+  };
+
+  // return (dispatch) => {
+  //   const ret = fetch(url)
+  //   .then(r => r.json())
+  //   .then(knowStatus => {
+  //     dispatch(receiveGuess(knowStatus));
+  //   })
+  //   .catch(error => {
+  //     dispatch(receiveError)
+  //   });
+  // };
+};
+
+var receiveGuess = exports.receiveGuess = function receiveGuess(knowStatus) {
+  return {
+    type: 'RECEIVE_GUESS',
+    knowStatus: parseInt(knowStatus, 10)
   };
 };
 
@@ -11171,7 +11224,7 @@ var wordsReceived = exports.wordsReceived = function wordsReceived(words) {
   };
 };
 
-var errorReceived = exports.errorReceived = function errorReceived(error) {
+var receiveError = exports.receiveError = function receiveError(error) {
   return {
     type: 'RECEIVE_ERROR',
     payload: error
@@ -11223,6 +11276,17 @@ document.addEventListener('DOMContentLoaded', function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var getNumForward = function getNumForward(knowStatus) {
+  return knowStatus * 20;
+};
+
+var getUpdatedWords = function getUpdatedWords(words, numForward) {
+  if (numForward >= words.length) {
+    return words.slice(1);
+  }
+  return words.slice(1, numForward).concat([words[0]]).concat(words.slice(numForward));
+};
+
 var wordReducer = exports.wordReducer = function wordReducer() {
   var words = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
@@ -11232,6 +11296,9 @@ var wordReducer = exports.wordReducer = function wordReducer() {
       return action.payload;
     case 'RECEIVE_ERROR':
       return error;
+    case 'RECEIVE_GUESS':
+      var numForward = getNumForward(action.knowStatus);
+      return getUpdatedWords(words, numForward);
     default:
       return words;
   }
@@ -25158,6 +25225,32 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var postJson = exports.postJson = function postJson(url, data) {
+  // Returns a promise with JS data
+  var headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  };
+  var req = {
+    headers: headers,
+    method: 'POST',
+    body: JSON.stringify(data)
+  };
+  return fetch(url, req).then(function (res) {
+    return res.json();
+  });
+};
 
 /***/ })
 /******/ ]);

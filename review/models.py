@@ -38,7 +38,8 @@ class Word(models.Model):
         return {
             'english': self.english,
             'foreign': self.foreign,
-            'pronunciation': self.pronunciation
+            'pronunciation': self.pronunciation,
+            'id': self.id
         }
 
     @classmethod
@@ -93,6 +94,12 @@ class WordStats(models.Model):
 
     def __str__(self):
         return '%s, %s' % (self.word.foreign, self.user.username)
+
+    def reset(self):
+        self.bucket = Bucket.objects.first()
+        self.times_right = 0
+        self.know_status = 0
+        self.save()
 
     @classmethod
     @transaction.atomic
