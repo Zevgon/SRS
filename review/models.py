@@ -26,15 +26,10 @@ class Language(models.Model):
 
 
 class Word(models.Model):
-    bucket = models.ForeignKey(Bucket, default=1)
     language = models.ForeignKey(Language)
-    user = models.ForeignKey(User)
     english = models.CharField(max_length=100)
     foreign = models.CharField(max_length=100)
     pronunciation = models.CharField(max_length=200, null=True)
-    last_reviewed = models.DateTimeField(null=True)
-    times_right = models.IntegerField(default=0)
-    know_status = models.IntegerField(default=0)
 
     def __str__(self):
         return '%s: %s' % (self.english, self.foreign) + ' (%s)' % self.language # NOQA
@@ -55,7 +50,7 @@ class Word(models.Model):
     @classmethod
     def add(cls, **kwargs):
         cls.validate_keys(
-            ['language', 'english', 'foreign', 'user_id'], kwargs)
+            ['language', 'english', 'foreign'], kwargs)
         if type(kwargs['language']) in [str, unicode]:
             try:
                 l = Language.objects.get(
@@ -67,9 +62,8 @@ class Word(models.Model):
 
     @classmethod
     @transaction.atomic
-    def bulk_add(cls, words, user_id, language_slug):
+    def bulk_add(cls, words, language_slug):
         word_kwargs = {}
-        word_kwargs['user_id'] = user_id
         try:
             language_obj = Language.objects.get(title_slug=language_slug)
         except Language.DoesNotExist:
@@ -84,7 +78,24 @@ class Word(models.Model):
             cls.add(**word_kwargs)
 
     @classmethod
-    def set_up_user_with_words(cls, user, language_title):
-        language_slug = slugify(language_title)
+    def import_words(cls, language_slug):
         words = get_words(language_slug)
-        cls.bulk_add(words, user.id, language_slug)
+        cls.bulk_add(words, language_slug)
+
+
+class WordStats(models.Model):
+    word = models.ForeignKey(Word, related_name='word_stats')
+    user = models.ForeignKey(User)
+    bucket = models.ForeignKey(Bucket, default=1)
+    last_reviewed = models.DateTimeField(null=True)
+    times_right = models.IntegerField(default=0)
+    know_status = models.IntegerField(default=0)
+
+    def __str__(self):
+        return '%s, %s' % (self.word.foreign, self.user.username)
+
+    @classmethod
+    @transaction.atomic
+    def set_up_user_with_word_stats(cls, user, language):
+        for word in Word.objects.filter(language=language):
+            cls.objects.create(word=word, user=user)
