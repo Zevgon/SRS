@@ -1,7 +1,18 @@
 import { createStore, applyMiddleware } from 'redux';
-import { reducer } from './reducers';
+import { wordReducer, statsReducer } from './reducers';
 import thunkMiddleware from 'redux-thunk';
+import { combineReducers } from 'redux';
 
-const store = createStore(reducer, {words: []}, applyMiddleware(thunkMiddleware));
+const initialState = {
+  words: [],
+  stats: [],
+}
+
+const rootReducer = combineReducers({
+  words: wordReducer,
+  stats: statsReducer,
+});
+
+const store = createStore(rootReducer, initialState, applyMiddleware(thunkMiddleware));
 
 export default store;

@@ -1,10 +1,14 @@
-export const reducer = (state = {words: []}, action) => {
+export const wordReducer = (words = [], action) => {
   switch (action.type) {
     case 'RECEIVE_WORDS':
-      return Object.assign({}, {words: action.payload});
+      return action.payload;
     case 'RECEIVE_ERROR':
-      return Objects.assign({}, {error: action.payload});
+      return error;
     default:
-      return state;
+      return words;
   }
 };
+
+export const statsReducer = (stats = [], action) => {
+  return stats;
+}

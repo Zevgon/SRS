@@ -11116,7 +11116,17 @@ var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_reducers.reducer, { words: [] }, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+var initialState = {
+  words: [],
+  stats: []
+};
+
+var rootReducer = (0, _redux.combineReducers)({
+  words: _reducers.wordReducer,
+  stats: _reducers.statsReducer
+});
+
+var store = (0, _redux.createStore)(rootReducer, initialState, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 
 exports.default = store;
 
@@ -11213,18 +11223,25 @@ document.addEventListener('DOMContentLoaded', function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var reducer = exports.reducer = function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { words: [] };
+var wordReducer = exports.wordReducer = function wordReducer() {
+  var words = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
   switch (action.type) {
     case 'RECEIVE_WORDS':
-      return Object.assign({}, { words: action.payload });
+      return action.payload;
     case 'RECEIVE_ERROR':
-      return Objects.assign({}, { error: action.payload });
+      return error;
     default:
-      return state;
+      return words;
   }
+};
+
+var statsReducer = exports.statsReducer = function statsReducer() {
+  var stats = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  return stats;
 };
 
 /***/ }),
