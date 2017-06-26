@@ -1,3 +1,5 @@
+import re
+
 from .models import WordStats
 from .models import Bucket
 
@@ -45,6 +47,11 @@ class GuessView(APIView):
         word_stats.save()
         return word_stats
 
+    def _is_correct(self, guess, translation):
+        return bool(re.search(r'\b%s\b' % re.escape(guess),
+                              translation,
+                              flags=re.IGNORECASE))
+
     def post(self, request):
         data = request.data
         try:
@@ -54,7 +61,7 @@ class GuessView(APIView):
                 'error': 'Can\'t find word with id %s' % data.id
             })
 
-        if data['english'] == word.english:
+        if self._is_correct(data['english'], word.english):
             word_stats = self._handle_correct(word)
         else:
             word_stats = self._handle_incorrect(word)

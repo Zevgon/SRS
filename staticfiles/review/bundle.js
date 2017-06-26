@@ -11056,7 +11056,7 @@ var App = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'review-game-container' },
         this.props.words.length ? _react2.default.createElement(_word2.default, {
           word: this.props.words[0],
           numCurrent: this.props.words.length
@@ -11248,7 +11248,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var getNumForward = function getNumForward(knowStatus) {
-  return knowStatus * 20;
+  if (knowStatus === 0) return 0;
+  return parseInt(10 * 2 ** (knowStatus - 1));
 };
 
 var getUpdatedWords = function getUpdatedWords(words, numForward) {
@@ -11305,7 +11306,7 @@ exports = module.exports = __webpack_require__(103)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  background-color: #eee;\n}\n.word-info {\n  background-color: white;\n  margin-bottom: 20px;\n}\n", ""]);
+exports.push([module.i, "body,\nform,\ndiv {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\nbody {\n  background-color: #eee;\n}\n.word-info {\n  background-color: white;\n  margin-bottom: 20px;\n}\n.review-game-container {\n  height: 550px;\n  max-width: 930px;\n  min-width: 550px;\n  position: relative;\n  margin: 0 auto;\n}\n.card {\n  border-radius: 3px;\n  background-color: white;\n  display: flex;\n  width: 100%;\n  flex-direction: column;\n  align-items: center;\n  height: 100%;\n  justify-content: space-between;\n  box-shadow: 2px 2px 4px 2px #ccc;\n}\n.card-top {\n  display: flex;\n  justify-content: space-between;\n  width: 100%;\n  box-sizing: border-box;\n  padding: 17px 17px 0px 17px;\n  color: gray;\n  font-family: sans-serif;\n}\n.word {\n  font-size: 30px;\n}\n.guess-form {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n  height: 50px;\n  margin-bottom: 70px;\n}\n.guess-field {\n  font-size: 16px;\n  width: 300px;\n  height: 28px;\n  border-radius: 5px;\n  border: 1px solid #ccc;\n  text-align: center;\n}\n.guess-field:focus {\n  outline: none;\n}\n", ""]);
 
 // exports
 
@@ -25305,26 +25306,41 @@ var Word = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'card' },
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'card-top' },
+          'Q.',
+          _react2.default.createElement(
+            'div',
+            null,
+            this.props.numCurrent,
+            '/',
+            this.props.total
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'word' },
           this.props.word.foreign
         ),
         _react2.default.createElement(
-          'div',
-          null,
-          this.props.numCurrent,
-          '/',
-          this.props.total
-        ),
-        _react2.default.createElement(
           'form',
-          null,
-          _react2.default.createElement('input', { type: 'text', value: this.state.guess, onChange: this.updateGuess }),
-          _react2.default.createElement('button', { onClick: function onClick(e) {
-              return _this2.submitGuess(e, _this2.props.word.id, _this2.state.guess);
-            } })
+          { className: 'guess-form' },
+          _react2.default.createElement('input', {
+            className: 'guess-field',
+            placeholder: 'Enter Guess',
+            type: 'text',
+            value: this.state.guess,
+            onChange: this.updateGuess
+          }),
+          _react2.default.createElement(
+            'button',
+            { onClick: function onClick(e) {
+                return _this2.submitGuess(e, _this2.props.word.id, _this2.state.guess);
+              } },
+            'Submit Guess'
+          )
         )
       );
     }

@@ -28,12 +28,23 @@ class Word extends Component {
 
   render() {
     return (
-      <div>
-        <div>{this.props.word.foreign}</div>
-        <div>{this.props.numCurrent}/{this.props.total}</div>
-        <form>
-          <input type="text" value={this.state.guess} onChange={this.updateGuess} />
-          <button onClick={(e) => this.submitGuess(e, this.props.word.id, this.state.guess)}></button>
+      <div className="card">
+        <div className="card-top">
+          Q.
+          <div>{this.props.numCurrent}/{this.props.total}</div>
+        </div>
+        <div className="word">{this.props.word.foreign}</div>
+        <form className="guess-form">
+          <input
+            className="guess-field"
+            placeholder="Enter Guess"
+            type="text"
+            value={this.state.guess}
+            onChange={this.updateGuess}
+          />
+          <button onClick={(e) => this.submitGuess(e, this.props.word.id, this.state.guess)}>
+            Submit Guess
+          </button>
         </form>
       </div>
     );

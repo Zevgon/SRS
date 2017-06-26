@@ -15,7 +15,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="review-game-container">
         {this.props.words.length ?
           <Word
             word={this.props.words[0]}

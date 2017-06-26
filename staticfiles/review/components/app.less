@@ -1,3 +1,9 @@
+body, form, div {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #eee;
 }
@@ -5,4 +11,60 @@ body {
 .word-info {
   background-color: white;
   margin-bottom: 20px;
+}
+
+.review-game-container {
+  height: 550px;
+  max-width: 930px;
+  min-width: 550px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.card {
+  border-radius: 3px;
+  background-color: white;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+  box-shadow: 2px 2px 4px 2px #ccc;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 17px 17px 0px 17px;
+  color: gray;
+  font-family: sans-serif;
+}
+
+.word {
+  font-size: 30px;
+}
+
+.guess-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  margin-bottom: 70px;
+}
+
+.guess-field {
+  font-size: 16px;
+  width: 300px;
+  height: 28px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.guess-field:focus {
+  outline: none;
 }

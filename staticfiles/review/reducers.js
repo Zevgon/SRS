@@ -1,6 +1,7 @@
-const getNumForward = knowStatus => (
-  knowStatus * 20
-);
+const getNumForward = knowStatus => {
+  if (knowStatus === 0) return 0;
+  return parseInt(10 * (2 ** (knowStatus - 1)));
+};
 
 const getUpdatedWords = (words, numForward) => {
   if (numForward === 0) {
