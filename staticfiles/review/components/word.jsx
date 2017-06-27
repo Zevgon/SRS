@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateWord } from '../actions';
+import {
+  updateWord,
+  revealWord,
+  hideWord,
+} from '../actions';
 
 class Word extends Component {
   constructor(props) {
@@ -10,6 +14,7 @@ class Word extends Component {
     };
     this.submitGuess = this.submitGuess.bind(this);
     this.updateGuess = this.updateGuess.bind(this);
+    this.reveal = this.reveal.bind(this);
   }
 
   updateGuess(e) {
@@ -21,9 +26,15 @@ class Word extends Component {
   submitGuess(e, wordId, guess) {
     e.preventDefault();
     this.props.dispatch(updateWord(wordId, guess));
+    this.props.dispatch(hideWord());
     this.setState({
       guess: '',
     });
+  }
+
+  reveal(e) {
+    e.preventDefault();
+    this.props.dispatch(revealWord());
   }
 
   render() {
@@ -33,7 +44,9 @@ class Word extends Component {
           Q.
           <div>{this.props.numCurrent}/{this.props.total}</div>
         </div>
-        <div className="word">{this.props.word.foreign}</div>
+        <div className="word">{this.props.revealed ?
+          this.props.word.english : this.props.word.foreign}
+        </div>
         <form className="guess-form">
           <input
             className="guess-field"
@@ -45,14 +58,16 @@ class Word extends Component {
           <button onClick={(e) => this.submitGuess(e, this.props.word.id, this.state.guess)}>
             Submit Guess
           </button>
+          <button onClick={e => this.reveal(e)}>Reveal</button>
         </form>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ wordCount }) => ({
+const mapStateToProps = ({ wordCount, revealed }) => ({
   total: wordCount.total,
+  revealed,
 });
 
 export default connect(mapStateToProps)(Word);

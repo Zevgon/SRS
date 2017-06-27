@@ -3,6 +3,7 @@ import {
   wordReducer,
   statsReducer,
   wordCountReducer,
+  revealReducer,
 } from './reducers';
 import thunkMiddleware from 'redux-thunk';
 import { combineReducers } from 'redux';
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   words: wordReducer,
   stats: statsReducer,
   wordCount: wordCountReducer,
+  revealed: revealReducer,
 });
 
 const store = createStore(rootReducer, initialState, applyMiddleware(thunkMiddleware));

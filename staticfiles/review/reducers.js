@@ -38,3 +38,14 @@ export const wordCountReducer = (wordCounts = {total: 0, current: 0}, action) =>
       return wordCounts;
   }
 }
+
+export const revealReducer = (revealed = false, action) => {
+  switch (action.type) {
+    case 'REVEAL_WORD':
+      return true;
+    case 'HIDE_WORD':
+      return false;
+    default:
+      return revealed
+  }
+}

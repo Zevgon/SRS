@@ -62,3 +62,15 @@ export const receiveError = error => {
     payload: error,
   };
 }
+
+export const revealWord = () => {
+  return {
+    type: 'REVEAL_WORD',
+  }
+}
+
+export const hideWord = () => {
+  return {
+    type: 'HIDE_WORD',
+  }
+}
