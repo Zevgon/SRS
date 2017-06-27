@@ -74,3 +74,7 @@ export const hideWord = () => {
     type: 'HIDE_WORD',
   }
 }
+
+export const shuffle = () => ({
+  type: 'SHUFFLE'
+})

@@ -11,3 +11,12 @@ export const postJson = (url, data) => {
   };
   return fetch(url, req).then(res => res.json());
 }
+
+export const shuffleArr = a => {
+  let b = Array.from(a);
+  for (let i = b.length; i; i--) {
+    let j = Math.floor(Math.random() * i);
+    [b[i - 1], b[j]] = [b[j], b[i - 1]];
+  }
+  return b;
+}

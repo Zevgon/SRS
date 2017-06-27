@@ -1,3 +1,5 @@
+import { shuffleArr } from '../common/utils';
+
 const getNumForward = knowStatus => {
   if (knowStatus === 0) return 0;
   return parseInt(10 * (2 ** (knowStatus - 1)));
@@ -21,6 +23,8 @@ export const wordReducer = (words = [], action) => {
     case 'RECEIVE_GUESS':
       const numForward = getNumForward(action.knowStatus);
       return getUpdatedWords(words, numForward);
+    case 'SHUFFLE':
+      return shuffleArr(words);
     default:
       return words;
   }

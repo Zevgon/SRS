@@ -4,6 +4,7 @@ import {
   updateWord,
   revealWord,
   hideWord,
+  shuffle,
 } from '../actions';
 
 class Word extends Component {
@@ -15,6 +16,7 @@ class Word extends Component {
     this.submitGuess = this.submitGuess.bind(this);
     this.updateGuess = this.updateGuess.bind(this);
     this.reveal = this.reveal.bind(this);
+    this.shuffle = this.shuffle.bind(this);
   }
 
   updateGuess(e) {
@@ -35,6 +37,11 @@ class Word extends Component {
   reveal(e) {
     e.preventDefault();
     this.props.dispatch(revealWord());
+  }
+
+  shuffle(e) {
+    e.preventDefault();
+    this.props.dispatch(shuffle());
   }
 
   render() {
@@ -59,6 +66,7 @@ class Word extends Component {
             Submit Guess
           </button>
           <button onClick={e => this.reveal(e)}>Reveal</button>
+          <button onClick={this.shuffle}>Shuffle</button>
         </form>
       </div>
     );
