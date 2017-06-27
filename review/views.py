@@ -48,9 +48,9 @@ class GuessView(APIView):
         return word_stats
 
     def _is_correct(self, guess, translation):
-        return bool(re.search(r'\b%s\b' % re.escape(guess),
-                              translation,
-                              flags=re.IGNORECASE))
+        return guess != '' and bool(re.search(r'\b%s\b' % re.escape(guess),
+                                    translation,
+                                    flags=re.IGNORECASE))
 
     def post(self, request):
         data = request.data

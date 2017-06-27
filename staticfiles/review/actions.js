@@ -69,9 +69,9 @@ export const revealWord = () => {
   }
 }
 
-export const hideWord = () => {
+export const unrevealWord = () => {
   return {
-    type: 'HIDE_WORD',
+    type: 'UNREVEAL_WORD',
   }
 }
 

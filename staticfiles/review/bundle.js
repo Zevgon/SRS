@@ -6862,7 +6862,7 @@ var shuffleArr = exports.shuffleArr = function shuffleArr(a) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.shuffle = exports.hideWord = exports.revealWord = exports.receiveError = exports.wordsReceived = exports.receiveGuess = exports.updateWord = exports.fetchWords = undefined;
+exports.shuffle = exports.unrevealWord = exports.revealWord = exports.receiveError = exports.wordsReceived = exports.receiveGuess = exports.updateWord = exports.fetchWords = undefined;
 
 var _utils = __webpack_require__(55);
 
@@ -6933,9 +6933,9 @@ var revealWord = exports.revealWord = function revealWord() {
   };
 };
 
-var hideWord = exports.hideWord = function hideWord() {
+var unrevealWord = exports.unrevealWord = function unrevealWord() {
   return {
-    type: 'HIDE_WORD'
+    type: 'UNREVEAL_WORD'
   };
 };
 
@@ -11329,6 +11329,12 @@ var Word = function (_Component) {
       this.props.dispatch((0, _actions.revealWord)());
     }
   }, {
+    key: 'unreveal',
+    value: function unreveal(e) {
+      e.preventDefault();
+      this.props.dispatch((0, _actions.unrevealWord)());
+    }
+  }, {
     key: 'shuffle',
     value: function shuffle(e) {
       e.preventDefault();
@@ -11339,6 +11345,15 @@ var Word = function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      var revealButton = _react2.default.createElement(
+        'button',
+        { onClick: this.props.revealed ? function (e) {
+            return _this2.unreveal(e);
+          } : function (e) {
+            return _this2.reveal(e);
+          } },
+        this.props.revealed ? 'Unreveal' : 'Reveal'
+      );
       return _react2.default.createElement(
         'div',
         { className: 'card' },
@@ -11376,13 +11391,7 @@ var Word = function (_Component) {
               } },
             'Submit Guess'
           ),
-          _react2.default.createElement(
-            'button',
-            { onClick: function onClick(e) {
-                return _this2.reveal(e);
-              } },
-            'Reveal'
-          ),
+          revealButton,
           _react2.default.createElement(
             'button',
             { onClick: this.shuffle },
@@ -11515,7 +11524,7 @@ var revealReducer = exports.revealReducer = function revealReducer() {
   switch (action.type) {
     case 'REVEAL_WORD':
       return true;
-    case 'HIDE_WORD':
+    case 'UNREVEAL_WORD':
       return false;
     default:
       return revealed;

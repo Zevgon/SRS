@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   updateWord,
   revealWord,
+  unrevealWord,
   hideWord,
   shuffle,
 } from '../actions';
@@ -39,12 +40,22 @@ class Word extends Component {
     this.props.dispatch(revealWord());
   }
 
+  unreveal(e) {
+    e.preventDefault();
+    this.props.dispatch(unrevealWord());
+  }
+
   shuffle(e) {
     e.preventDefault();
     this.props.dispatch(shuffle());
   }
 
   render() {
+    const revealButton = (
+      <button onClick={this.props.revealed ? e => this.unreveal(e) : e => this.reveal(e)}>
+        {this.props.revealed ? 'Unreveal' : 'Reveal'}
+      </button>
+    );
     return (
       <div className="card">
         <div className="card-top">
@@ -65,7 +76,7 @@ class Word extends Component {
           <button onClick={(e) => this.submitGuess(e, this.props.word.id, this.state.guess)}>
             Submit Guess
           </button>
-          <button onClick={e => this.reveal(e)}>Reveal</button>
+          {revealButton}
           <button onClick={this.shuffle}>Shuffle</button>
         </form>
       </div>

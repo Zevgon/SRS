@@ -47,7 +47,7 @@ export const revealReducer = (revealed = false, action) => {
   switch (action.type) {
     case 'REVEAL_WORD':
       return true;
-    case 'HIDE_WORD':
+    case 'UNREVEAL_WORD':
       return false;
     default:
       return revealed
